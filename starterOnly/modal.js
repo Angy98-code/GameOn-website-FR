@@ -6,7 +6,7 @@ function editNav() {
     x.className = "topnav";
   }
 }
-console.log("toto");
+
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
@@ -19,5 +19,3 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
-
-
