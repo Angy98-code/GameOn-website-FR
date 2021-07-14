@@ -256,8 +256,6 @@ nameInput.addEventListener('invalid', () => {
   }
 });*/
 
-
-
 /*
 const conditionsButton = document.getElementsByClassName("checkbox-icon");
 
@@ -289,3 +287,101 @@ function validate(e) {
 
   if (isFormValid) displaySuccessMessage();
 }*/
+/*const conditionChecked = document.getElementsByClassName("btn_submit");
+
+function conditionChecked("formulaire") {
+  if(formulaire.checkbox1.checked == true) { formulaire.submit.disabled = false}
+  if(formulaire.checkbox1.checked == false) { formulaire.submit.disabled = true}
+  return "chochezz";
+}*/
+//EN DESSOUS RIEN NE FONCTIONNE CORRECTEMENT
+//
+//
+//Message soumission ok enregistrement oui mais il faut un message à part !!!
+//
+/*
+function submitOk() {
+  let checkedBtn = document.getElementById("checkbox1");
+  let submitBtn = document.getElementById("submit");
+  let text = document.getElementById("text");
+  if (checkedBtn.checked == true) {
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
+*/
+// cela fonctionne mais il faut que cela fonctionne uniquement
+// quand tout est ok
+/*
+function merciConfirmation() {
+  let x;
+  const prenom = document.getElementById("first");
+  const nom = document.getElementById("last");
+  //comment faire pour que les autres conditions soit vraies
+  //avant d'envoyer ce message
+  // ou quand toutes les conditions sont reunies alors message
+  //faire const pour chaque element form ?
+  if (prenom == true)
+    if (nom == true)
+      if (confirm("Merci pour la validation de l'enregistrement") == true) {
+        //maintenant plus de texte qui s'affiche et si je fais
+        //document.write ?!
+        //ou utiliser each !! si toute les conditions sont remplies alors ...
+        x = "appuyer";
+      } else {
+        x = "cancell";
+      }
+  document.getElementById("text").innerHTML = x;
+}
+*/
+// bouton alerte pour la case condition
+//checkbox_icon
+// iconObligatoire id
+/*
+function validationObligatoire() {
+  const iconBtn = document.getElementsById("iconobligatoire");
+  if (iconBtn.checked == true) {
+    icontext.style.display = "none";
+  } else {
+    icontext.style.display = "block";
+  }
+}
+*/
+/*
+function submitOk() {
+  let checkedBtn = document.getElementById("checkbox1");
+  let submitBtn = document.getElementById("submit");
+  let text = document.getElementById("text");
+  if (checkedBtn.checked == true) {
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}*/
+
+//ah oui il faut partir de form
+//si tous les element de form ok alors bouton submit envoi un message de remerciement
+//dans ttes les conditions de form sont remplie alors document.write ou message confirm mais pas prompt ni alert
+//
+//function validationBtnSubmit =
+
+// ce satané bouton condition obligatoire
+
+//C'est une fonction dans une fonction ?
+//grrrrrrr ca ne marche pas
+function validationRegistre() {
+  const iconBtn = document.getElementById("iconobligatoire");
+  if (iconBtn.checked == true) {
+    icontext.style.display = "none";
+  } else {
+    icontext.style.display = "block";
+  }
+  console.log(iconBtn);
+}
+//const boutonSubmit = document.getElementById("submit");
+
+
+
+// il faut une autre fonction pour le bouton submit
+//quand on clique sur submit et que icon est décocher message erreur
