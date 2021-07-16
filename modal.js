@@ -131,17 +131,17 @@ function close () {
 
 // bouton fermeture croix je m'inscris okkkkkkkk
 //si je fais .close la croix uniquement disparait!
-let fermetureCroixJeMinscris = document.querySelector(".close");
+const fermetureCroixJeMinscris = document.querySelector("#closebtn");
 const modalbg = document.querySelector(".bground"); //à l'origine
 
 //window.onclick = function(event) {
 
-document.addEventListener("click", function (event) {
-  if (event.target == fermetureCroixJeMinscris) {
-    // fermetureCroixJeMinscris.style.display = "none"; la croix disparait au 2ème click
-    modalbg.style.display = "none"; // fait disparaitre le tout
-    console.log(fermetureCroixJeMinscris);
-  }
+fermetureCroixJeMinscris.addEventListener("click", function (event) {
+  //if (event.target == fermetureCroixJeMinscris) {
+  // fermetureCroixJeMinscris.style.display = "none"; la croix disparait au 2ème click
+  modalbg.style.display = "none"; // fait disparaitre le tout
+  console.log(fermetureCroixJeMinscris);
+  // }
 });
 
 //alert quand on entre pas deux lettres
@@ -370,7 +370,7 @@ function submitOk() {
 
 //C'est une fonction dans une fonction ?
 //grrrrrrr ca ne marche pas
-function validationRegistre() {
+/*function validationRegistre() {
   const iconBtn = document.getElementById("iconobligatoire");
   if (iconBtn.checked == true) {
     icontext.style.display = "none";
@@ -378,10 +378,84 @@ function validationRegistre() {
     icontext.style.display = "block";
   }
   console.log(iconBtn);
-}
+}*/
 //const boutonSubmit = document.getElementById("submit");
-
-
 
 // il faut une autre fonction pour le bouton submit
 //quand on clique sur submit et que icon est décocher message erreur
+// ok en partie
+const validate = (event) => {
+  event.preventDefault(); //formulaire
+  const nameInput = document.getElementById("first"); // name field
+  let valueNameInput = nameInput.value; //value field
+
+  const alphabetWord = /^[A-Za-z]+$/;
+  //var letters = /^[A-Za-z]+$/;
+  //if (inputtxt.value.match(letters))
+
+  console.log(valueNameInput);
+  if (valueNameInput.length < 2) {
+    // 1- for the caracter number
+    console.log("problem nombre de caractères!");
+    //created a div with innerHTML
+    //warning message, the field is not correct
+    const text = document.getElementById("texterrorfirstname").textContent;
+    document.getElementById("texterrorfirstname").textContent =
+      "le champ n'est pas valide, veuillez entrer au minimum 2 lettres "; // pourquoi je ne peux pas mettre text tt simplement ?
+    // change style for error field
+    changeStyleFirstName = document.getElementById("texterrorfirstname");
+    changeStyleFirstName.setAttribute(
+      "style",
+      "font-size : 16px; color : red; font-weight : bold"
+    );
+  } else {
+    valueNameInput.length > 2;
+    console.log("nombre de lettres tout est ok");
+    document.getElementById("texterrorfirstname").textContent = "";
+  }
+  if (valueNameInput == /^[A-Z]+$/i) {
+    const text = document.getElementById("texterrorfirstname").textContent;
+    document.getElementById("texterrorfirstname").textContent = "";
+    console.log("lettre alphabet ok");
+  } else {
+    valueNameInput != /^[A-Z]+$/i;
+    const text = document.getElementById("texterrorfirstname").textContent;
+
+    console.log("lettre alphabet non ok");
+  }
+};
+
+//nnnnn
+/*if (valueNameInput.letters != /[a-z]/) {
+    console.log("probleme lettre");
+    document.getElementById("texterrorfirstname").textContent =
+      "Merci de renseigner votre prénom ";
+  } else {
+    valueNameInput.letters == /[a-z]/;
+    console.log("tout est ok aussi pour les lettres");
+  }*/
+
+/*
+function validate(form)
+{
+  fail = validateFirst(form.first.value)
+  fail += validateLast(form.last.value)
+  if (fail == "") return true
+  else { alert(fail); return false}
+}
+function validateFirst(field)
+{
+  if (field == "") { return "merci de renseigner votre prénom"}
+   else { if (field.length < 2){
+     return "le nom d'utilisateur doit contenir au moins 2 caractères."
+   }
+else {if (/[^a-zA-Z8-9_.]/test(field)){
+  return "seuls caractères permis dans le nom d'utilisateur : " + "a-z, A-Z,- et _."
+  return ""
+}
+
+}   
+   }
+
+   
+}*/

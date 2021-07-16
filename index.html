@@ -66,7 +66,7 @@ Invalid syntax, the height attribute expects only digits -
     <div class="bground">
       <div class="content">
         <!-- bouton fermeture avec la croix-->
-        <span class="close"></span>
+        <span class="close" id="closebtn"></span>
         <!-- <input class="close" type='button' value='Fermeture Pop Up' onClick='fencent.close();'>
    -->
 
@@ -75,29 +75,31 @@ Invalid syntax, the height attribute expects only digits -
 
 
         <div class="modal-body">
-          <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+          <form name="reserve" onsubmit="validate(event)">
             <div class="formData">
               <label for="first">Prénom</label><br>
-              <input class="textcontrol" type="text" id="first" name="first" minlength="2" required
-                pattern="[A-Za-z]+" /> <br>
+              <input class="textcontrol" type="text" id="first" name="first" required="required" /> <br>
+              
               <!--ajout requiredpattern pour n'avoir que des lettres-->
+            <div id="texterrorfirstname"></div>
+            <!--ajout de cette div -->
             </div>
             <div class="formData">
               <label>Nom</label><br>
-              <input class="textcontrol" type="text" id="last" name="last" minlength="2" required
-                pattern="[A-Za-z]+" /><br>
+              <input class="textcontrol" type="text" id="last" name="last" 
+                 /><br>
             </div>
             <div class="formData">
               <label>E-mail</label><br>
-              <input class="textcontrol" type="email" id="email" name="email" required="required" /><br>
+              <input class="textcontrol" type="email" id="email" name="email"  /><br>
             </div>
             <div class="formData">
               <label>Date de naissance</label><br>
-              <input class="textcontrol" type="date" id="birthdate" name="birthdate" required="required" /><br>
+              <input class="textcontrol" type="date" id="birthdate" name="birthdate" /><br>
             </div>
             <div class="formData">
               <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="textcontrol" id="quantity" name="quantity" required="required" min="0"
+              <input type="number" class="textcontrol" id="quantity" name="quantity"  min="0"
                 max="99">
             </div>
             <p class="text-label">Quelle ville ?</p>
@@ -129,8 +131,8 @@ Invalid syntax, the height attribute expects only digits -
             </div>
 
             <div class="formData">
-              <input class="checkbox-input" type="checkbox" id="checkbox1" name="checkbox1" checked required="required"
-                onclick="myFunction()" />
+              <input class="checkbox-input" type="checkbox" id="checkbox1" name="checkbox1" checked
+                required="required" />
               <!-- ajout required="required" et  onclick-->
 
               <label class="checkbox2-label" for="checkbox1">
@@ -149,8 +151,7 @@ Invalid syntax, the height attribute expects only digits -
               </label>
               <br>
             </div>
-            <input class="btn-submit" onclick="merciConfirmation()" type="submit" id="submit" name="submit"
-              value="C'est parti" />
+            <input class="btn-submit" type="submit" id="submit" name="submit" value="C'est parti" />
             <p id="text" style="display:none">BRAVO ! Checkbox is CHECKED!</p>
             <!--ajout precedent ajout id submit et onclick-->
             <!-- ajout name-->
