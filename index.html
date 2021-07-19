@@ -73,38 +73,47 @@ Invalid syntax, the height attribute expects only digits -
 
 
 
-
+        <!--relier label à un champ label for input id même nom-->
         <div class="modal-body">
-          <form name="reserve" onsubmit="validate(event)">
+          <form name="reserve"
+            onsubmit="validateFirst(event), validateLast(event), validateEmail(event), validateBirthdate(event), validateQuantity(event), validateConditions(event)">
+            <!--ajout de ID = "validate" permet de récuperer le formulaire plus tard en js-->
+            <!-- il y a plusieurs chose à savoir pour form ex reset
+              
+              ...-->
             <div class="formData">
               <label for="first">Prénom</label><br>
-              <input class="textcontrol" type="text" id="first" name="first" required="required" /> <br>
-              
+              <input class="textcontrol" type="text" id="first" name="first" /> <br>
+
               <!--ajout requiredpattern pour n'avoir que des lettres-->
-            <div id="texterrorfirstname"></div>
-            <!--ajout de cette div -->
+              <div id="texterrorfirstname"></div>
+              <!--ajout de cette div -->
             </div>
             <div class="formData">
-              <label>Nom</label><br>
-              <input class="textcontrol" type="text" id="last" name="last" 
-                 /><br>
+              <label for="last">Nom</label><br>
+              <input class="textcontrol" type="text" id="last" name="last" /><br>
+              <div id="texterrorlastname"></div>
             </div>
             <div class="formData">
-              <label>E-mail</label><br>
-              <input class="textcontrol" type="email" id="email" name="email"  /><br>
+              <label for="email">E-mail</label><br>
+              <input class="textcontrol" id="email" name="email" /><br>
+              <!--type="email" enlevé pour ne pas avoir un message d'erreur-->
+              <div id="texterroremail"></div>
             </div>
             <div class="formData">
-              <label>Date de naissance</label><br>
+              <label for="birthdate">Date de naissance</label><br>
               <input class="textcontrol" type="date" id="birthdate" name="birthdate" /><br>
+              <div id="texterrorbirthdate"></div>
             </div>
             <div class="formData">
-              <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="textcontrol" id="quantity" name="quantity"  min="0"
-                max="99">
+              <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+              <input type="number" class="textcontrol" id="quantity" name="quantity">
+              <!--enlevé  min="0" max="99" je le passe en js direcetement  -->
+              <div id="texterrorquantity"></div>
             </div>
             <p class="text-label">Quelle ville ?</p>
             <div class="formData">
-              <input class="checkbox-input" checked type="radio" id="location1" name="location" value="New York" />
+              <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
               <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>
                 New York</label>
@@ -131,28 +140,29 @@ Invalid syntax, the height attribute expects only digits -
             </div>
 
             <div class="formData">
+              <!-- ajout required="required" et  onclick-->
               <input class="checkbox-input" type="checkbox" id="checkbox1" name="checkbox1" checked
                 required="required" />
-              <!-- ajout required="required" et  onclick-->
-
               <label class="checkbox2-label" for="checkbox1">
                 <!-- pourquoi 2?-->
                 <span class="checkbox-icon" id="iconobligatoire"></span>
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
+              <div id="texterrorconditions"></div>
               <p id="icontext" style="display:none">ce champ est obligatoire</p>
               <br>
-
-              <input class="checkbox-input" type="checkbox" id="checkbox2" name="checkbox2" />
               <!--ajout name pour la fonction-->
+              <input class="checkbox-input" type="checkbox" id="checkbox2" name="checkbox2" />
+
               <label class="checkbox2-label" for="checkbox2">
                 <span class="checkbox-icon"></span>
                 <!-- Je --> Je souhaite être prévenu des prochains évènements.
               </label>
               <br>
             </div>
+            <!--manque qq chose imput suffit ? il n'est pa relier à un button ou label avec for-->
             <input class="btn-submit" type="submit" id="submit" name="submit" value="C'est parti" />
-            <p id="text" style="display:none">BRAVO ! Checkbox is CHECKED!</p>
+            <p class="submitMessage" id="text" style="display:none">BRAVO ! Checkbox is CHECKED!</p>
             <!--ajout precedent ajout id submit et onclick-->
             <!-- ajout name-->
 
