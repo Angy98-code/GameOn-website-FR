@@ -75,12 +75,12 @@ Invalid syntax, the height attribute expects only digits -
 
         <!--relier label à un champ label for input id même nom-->
         <div class="modal-body">
-          <form name="reserve"
-            onsubmit="validateFirst(event), validateLast(event), validateEmail(event), validateBirthdate(event), validateQuantity(event), validateConditions(event)">
+          <form id="inscription" name="reserve"
+            onsubmit="validateFirst(event), validateLast(event), validateEmail(event), validateBirthdate(event), validateQuantity(event), validateCheckbox(event)">
             <!--ajout de ID = "validate" permet de récuperer le formulaire plus tard en js-->
-            <!-- il y a plusieurs chose à savoir pour form ex reset
-              
-              ...-->
+            <!-- il y a plusieurs chose à savoir pour form ex reset-->
+            <!--manque id pour valider inscription formulaire donc un id dans form-->
+
             <div class="formData">
               <label for="first">Prénom</label><br>
               <input class="textcontrol" type="text" id="first" name="first" /> <br>
@@ -102,7 +102,7 @@ Invalid syntax, the height attribute expects only digits -
             </div>
             <div class="formData">
               <label for="birthdate">Date de naissance</label><br>
-              <input class="textcontrol" type="date" id="birthdate" name="birthdate" /><br>
+              <input class="textcontrol" id="birthdate" name="birthdate" type="date" /><br>
               <div id="texterrorbirthdate"></div>
             </div>
             <div class="formData">
@@ -111,6 +111,9 @@ Invalid syntax, the height attribute expects only digits -
               <!--enlevé  min="0" max="99" je le passe en js direcetement  -->
               <div id="texterrorquantity"></div>
             </div>
+
+            <!--fieldset regroupé les champs ensuite legend mais il n'y a pas ca ici
+              on parle de optgroup par exemple europe asie ...-->
             <p class="text-label">Quelle ville ?</p>
             <div class="formData">
               <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
@@ -137,20 +140,21 @@ Invalid syntax, the height attribute expects only digits -
               <label class="checkbox-label" for="location6">
                 <span class="checkbox-icon"></span>
                 Portland</label>
+              <div id="texterrorlocation"></div>
             </div>
 
             <div class="formData">
               <!-- ajout required="required" et  onclick-->
-              <input class="checkbox-input" type="checkbox" id="checkbox1" name="checkbox1" checked
-                required="required" />
-              <label class="checkbox2-label" for="checkbox1">
+              <input checked class="checkbox-input" type="checkbox" id="checkbox1" name="checkbox1" />
+              <label class=" checkbox2-label" for="checkbox1">
                 <!-- pourquoi 2?-->
-                <span class="checkbox-icon" id="iconobligatoire"></span>
+                <span class="checkbox-icon" id="iconObligatoire"></span>
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
               <div id="texterrorconditions"></div>
-              <p id="icontext" style="display:none">ce champ est obligatoire</p>
-              <br>
+              <p id="icontext" style="display:none"></p>
+              <!--il y a vait du texte (ce champ est obligatoire)entre les balise et display none obligatoire ?-->
+              <!--j'enlève une br-->
               <!--ajout name pour la fonction-->
               <input class="checkbox-input" type="checkbox" id="checkbox2" name="checkbox2" />
 
@@ -159,6 +163,8 @@ Invalid syntax, the height attribute expects only digits -
                 <!-- Je --> Je souhaite être prévenu des prochains évènements.
               </label>
               <br>
+              <br>
+              <!---j'ajoute une br-->
             </div>
             <!--manque qq chose imput suffit ? il n'est pa relier à un button ou label avec for-->
             <input class="btn-submit" type="submit" id="submit" name="submit" value="C'est parti" />

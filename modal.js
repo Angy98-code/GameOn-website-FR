@@ -85,6 +85,14 @@ function validatefirst(event) {
     }
   }
 }*/
+
+//detection envoi formulaire sur nouvelle page id dans form NB
+/* bouton envoiNBNBNBNBNB
+document.getElementById("inscription").addEventListener("submit", function (e) {
+  e.preventDefault(); // on le met si erreur afin de ne pas envoyé le formulaire
+  alert("Formulaire envoyé !");
+});
+NBNBNBNBNBNBNB*/
 //1ier cas
 const validateFirst = (event) => {
   event.preventDefault(); //formulaire
@@ -124,7 +132,7 @@ const validateFirst = (event) => {
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
-    console.log("ok");
+    console.log("ok prénom correct");
   } else {
     changeStyleFirstName = document.getElementById("texterrorfirstname");
     changeStyleFirstName.setAttribute(
@@ -171,7 +179,7 @@ const validateLast = (event) => {
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
-    console.log("ok");
+    console.log("ok nom correct");
   } else {
     changeStyleFirstName = document.getElementById("texterrorfirstname");
     changeStyleFirstName.setAttribute(
@@ -226,17 +234,20 @@ const validateEmail = (event) => {
   } else {
     // document.getElementById("texterroremail").textContent;
     document.getElementById("texterroremail").textContent = "";
+    console.log("ok email correct");
   }
 };
 
 // BIRTHDAY
 
 const validateBirthdate = (event) => {
+  event.preventDefault(); //formulaire
   const nameInputBirthdate = document.getElementById("birthdate"); // name field
   const valueNameInputBirthdate = nameInputBirthdate.value; //value field
   // const birthdateFormat =
   /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z0-9_\-\.]{2,5})$/;
   let errorText = document.getElementById("texterrorbirthdate");
+  // setFullYear("first");
 
   if (valueNameInputBirthdate === "") {
     event.preventDefault(); //formulaire
@@ -252,6 +263,7 @@ const validateBirthdate = (event) => {
     /[^a-zA-Z0-9.@_-]/.test(valueNameInputBirthdate)
   ) {
     errorText.innerHTML = "Entrez votre date de naissance";
+    // nameInputBirthdate.setCustomValidity("");
     changeStyleBirthdate = document.getElementById("texterrorbirthdate");
     changeStyleBirthdate.setAttribute(
       "style",
@@ -263,6 +275,7 @@ const validateBirthdate = (event) => {
     console.log("all is perfect for bithdate");
   }
 };
+
 // QUANTITY
 
 const validateQuantity = (event) => {
@@ -301,11 +314,125 @@ const validateQuantity = (event) => {
   }
   return true; //TAF pour submit
 };
-// les boutons villes au moins un doit être checker
 
-const validateConditions = (event) => {
+//bouton ville taf
 
+/*
+const validateCheckbox = (event) => {
+  event.preventDefault(); //formulaire
+  const location1Input = document.getElementById("location1"); // name field
+  const location2Input = document.getElementById("location2"); // name field
+  const location3Input = document.getElementById("location3"); // name field
+  const location4Input = document.getElementById("location4"); // name field
+  const location5Input = document.getElementById("location5"); // name field
+  const location6Input = document.getElementById("location6"); // name field
+  const checkedLocation1Input = location1Input.checked; 
+  const checkedLocation2Input = location2Input.checked; 
+  const checkedLocation3Input = location3Input.checked; 
+  const checkedLocation4Input = location4Input.checked; 
+  const checkedLocation5Input = location5Input.checked; 
+  const checkedLocation6Input = location6Input.checked; 
+  //value checked radio
+
+  let errorText = document.getElementById("texterrorlocation");
+
+  if (checkedLocation1Input.checked
+    quantityRegex.test(quantityInput.value) == true &&
+    valueQuantityInput <= 99
+  ) {
+    errorText.innerHTML = "";
+    changeStyleQuantity = document.getElementById("texterrorquantity");
+    changeStyleQuantity.setAttribute(
+      "style",
+      "font-size : 16px; color : red; font-weight : bold"
+    );
+    console.log("okay for number of games");
+  } else if (valueQuantityInput > 99) {
+    changeStyleQuantity = document.getElementById("texterrorquantity");
+    changeStyleQuantity.setAttribute(
+      "style",
+      "font-size : 16px; color : red; font-weight : bold"
+    );
+    errorText.innerHTML = "Cette valeur doit être inférieur ou égal à 99";
+  } else {
+    changeStyleQuantity = document.getElementById("texterrorquantity");
+    changeStyleQuantity.setAttribute(
+      "style",
+      "font-size : 16px; color : red; font-weight : bold"
+    );
+    errorText.innerHTML = "merci d'indiquer le nombre de games";
+  }
+  return true; //TAF pour submit
+};;;;
+*/
+//o
+const validateCheckbox = (event) => {
+  const conditionsCheckBox1 = document.getElementById("checkbox1");
+  conditionsCheckBox1.addEventListener("change", function (event) {
+    event.preventDefault();
+    let errorText = document.getElementById("texterrorconditions");
+    //let errorText = document.getElementById("texterrorconditions");
+    if (conditionsCheckBox1.checked == false) {
+      errorText.innerHTML =
+        "Merci d'accepter les conditions générales pour s'inscrire";
+      changeStyleIconObligatoire = document.getElementById(
+        "texterrorconditions"
+      );
+      changeStyleIconObligatoire.setAttribute(
+        "style",
+        "font-size : 16px; color : red; font-weight : bold"
+      );
+    } else {
+      changeStyleIconObligatoire = document.getElementById(
+        "texterrorconditions"
+      );
+      changeStyleIconObligatoire.setAttribute(
+        "style",
+        "font-size : 16px; color : red; font-weight : bold"
+      );
+      errorText.innerHTML = "";
+    }
+  });
 };
+// LE BOUTON CHECK obligatoire
+
+//document
+//.getElementById("checkbox1")
+//.addEventListener("click", function (event) {
+//const validateConditions = (event) => {//
+//document.getElementById("iconobligatoire").addEventListener("click", onclick);
+//event.preventDefault();
+//const iconObligatoireInput = document.getElementById("iconObligatoire");
+//const valueIconObligatoireInput = iconObligatoireInput.value;
+//const conditionsCheckBox1 = document.getElementById("checkbox1");
+//
+//
+//
+/*
+conditionsCheckBox1.addEventListener("change", function (event) {
+  event.preventDefault();
+  let errorText = document.getElementById("texterrorconditions");
+  //let errorText = document.getElementById("texterrorconditions");
+  if (conditionsCheckBox1.checked == false) {
+    errorText.innerHTML =
+      "Merci d'accepter les conditions générales pour s'inscrire";
+    changeStyleIconObligatoire = document.getElementById("texterrorconditions");
+    changeStyleIconObligatoire.setAttribute(
+      "style",
+      "font-size : 16px; color : red; font-weight : bold"
+    );
+  } else {
+    changeStyleIconObligatoire = document.getElementById("texterrorconditions");
+    changeStyleIconObligatoire.setAttribute(
+      "style",
+      "font-size : 16px; color : red; font-weight : bold"
+    );
+    errorText.innerHTML = "";
+  }
+});
+*/
+//return true;
+
 /*
 const button = document.querySelector(".btn");
 button.onclick = function () {
@@ -317,4 +444,5 @@ button.onclick = () => {
 };
 */
 
-// LE BOUTON CHECK
+//
+//https://www.youtube.com/watch?v=NxTQyZuwFOw
