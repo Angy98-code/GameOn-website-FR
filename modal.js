@@ -52,7 +52,8 @@ const validateFirst = (event) => {
   let errorText = document.getElementById("texterrorfirstname");
   //let isFirstNameValid = false;
   if (valueNameInput.length < 2) {
-    errorText.innerHTML = "Merci d'indiquer au moins 2 lettres";
+    errorText.innerHTML =
+      "Merci d'entrer au minimum 2 caractères pour le champ du prénom.";
     changeStyleFirstName = document.getElementById("texterrorfirstname");
     changeStyleFirstName.setAttribute(
       "style",
@@ -61,7 +62,7 @@ const validateFirst = (event) => {
     console.log("problem nombre de caractères prénom!");
     return false;
   } else if (
-    nameRegex.test(nameInput.value) == true && ///erreur si valueNameInput!!!!!!!
+    nameRegex.test(nameInput.value) === true && ///erreur si valueNameInput!!!!!!!
     valueNameInput.length >= 2
   ) {
     errorText.innerHTML = "";
@@ -95,22 +96,22 @@ const validateLast = (event) => {
 
   const lastNameRegex = /^[A-ZÇÉÈÊËÀÂÎÏÔÙÛa-zçéèêëàâîïôùû_\-\.\ ]+$/;
   let errorText = document.getElementById("texterrorlastname");
-  let isLastNameValid = false;
+  // let isLastNameValid = false;
   if (valueLastNameInput.length < 2) {
-    errorText.innerHTML = "Merci d'indiquer au moins 2 lettres";
+    errorText.innerHTML =
+      "Merci d'entrer au minimum 2 caractères pour le champ du nom.";
     changeStyleLastName = document.getElementById("texterrorlastname");
     changeStyleLastName.setAttribute(
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
     console.log("problem nombre de caractères nom!");
+    return false;
   } else if (
     lastNameRegex.test(lastNameInput.value) == true && ///erreur si valueNameInput!!!!!!!
     valueLastNameInput.length >= 2
   ) {
     errorText.innerHTML = "";
-
-    isLastNameValid = true;
 
     changeStyleLastName = document.getElementById("texterrorlastname");
     changeStyleLastName.setAttribute(
@@ -118,6 +119,7 @@ const validateLast = (event) => {
       "font-size : 16px; color : red; font-weight : bold"
     );
     console.log("ok nom correct");
+    return true;
   } else {
     changeStyleFirstName = document.getElementById("texterrorfirstname");
     changeStyleFirstName.setAttribute(
@@ -125,9 +127,8 @@ const validateLast = (event) => {
       "font-size : 16px; color : red; font-weight : bold"
     );
     errorText.innerHTML = "Merci d'indiquer un nom";
+    return false;
   }
-
-  return isLastNameValid;
 };
 
 //
@@ -142,37 +143,38 @@ const validateEmail = (event) => {
   //  /^[^\W][a-zA-Z0-9\-\._]+[^\W]@[^\W][a-zA-Z0-9\-\._]+[^\W]\.[a-zA-Z]{2,6}$/;
 
   // /^\A(?:[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])\z$/;
-  let isEmailValid = false;
-  console.log(emailFormat.test(valueNameInputEmail));
+  // let isEmailValid = false;
+  console.log(emailFormat.test(valueNameInputEmail)); // erklärung!
 
   if (valueNameInputEmail == "") {
     //return "entrez une adresse email valide";
     console.log("");
     textEmail = document.getElementById("texterroremail").textContent;
     document.getElementById("texterroremail").textContent =
-      "Entrez une adresse email valide champ vide ";
+      "Merci de renseigner une adresse email valide.";
     changeStyleEmail = document.getElementById("texterroremail");
     changeStyleEmail.setAttribute(
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
+    return false;
   } else if (!emailFormat.test(valueNameInputEmail)) {
     //return "l'adresse incorrect";
     // return "";
     document.getElementById("texterroremail").textContent =
-      "Adresse email incorrect ";
+      "Adresse email incorrect. ";
     changeStyleEmail = document.getElementById("texterroremail");
     changeStyleEmail.setAttribute(
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
+    return false;
   } else {
     // document.getElementById("texterroremail").textContent;
     document.getElementById("texterroremail").textContent = "";
     console.log("ok email correct");
-    isEmailValid = true;
+    return true;
   }
-  return isEmailValid;
 };
 
 // BIRTHDAY
@@ -185,34 +187,21 @@ const validateBirthdate = (event) => {
   /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z0-9_\-\.]{2,5})$/;
   let errorText = document.getElementById("texterrorbirthdate");
   // setFullYear("first");
-  let isBirthdateValid = false;
 
   if (valueNameInputBirthdate === "") {
-    errorText.innerHTML = "Merci d'entrez une date de naissance valide";
+    errorText.innerHTML = "Merci d'entrer votre date de naissance.";
     changeStyleBirthdate = document.getElementById("texterrorbirthdate");
     changeStyleBirthdate.setAttribute(
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
-  } else if (
-    (valueNameInputBirthdate.indexOf(".") > 0 &&
-      valueNameInputBirthdate.indexOf("@") > 0) ||
-    /[^a-zA-Z0-9.@_-]/.test(valueNameInputBirthdate)
-  ) {
-    errorText.innerHTML = "Entrez votre date de naissance";
-    // nameInputBirthdate.setCustomValidity("");
-    changeStyleBirthdate = document.getElementById("texterrorbirthdate");
-    changeStyleBirthdate.setAttribute(
-      "style",
-      "font-size : 16px; color : red; font-weight : bold"
-    );
+    return false;
   } else {
     // document.getElementById("texterroremail").textContent;
     document.getElementById("texterrorbirthdate").textContent = "";
     console.log("ok pour birthdate");
-    isBirthdateValid = true;
+    return true;
   }
-  return isBirthdateValid;
 };
 
 // QUANTITY
@@ -224,9 +213,9 @@ const validateQuantity = (event) => {
 
   const quantityRegex = /^[0-9]/;
   let errorText = document.getElementById("texterrorquantity");
-  let isQuantityValid;
+
   if (
-    quantityRegex.test(quantityInput.value) == true &&
+    quantityRegex.test(quantityInput.value) === true &&
     valueQuantityInput <= 99
   ) {
     errorText.innerHTML = "";
@@ -236,24 +225,25 @@ const validateQuantity = (event) => {
       "font-size : 16px; color : red; font-weight : bold"
     );
     console.log("okay for number of games");
-    isQuantityValid = true;
+    return true;
   } else if (valueQuantityInput > 99) {
     changeStyleQuantity = document.getElementById("texterrorquantity");
     changeStyleQuantity.setAttribute(
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
-    errorText.innerHTML = "Cette valeur doit être inférieur ou égal à 99";
+    errorText.innerHTML = "Le nombre doit être inférieur ou égal à 99.";
+    return false;
   } else {
     changeStyleQuantity = document.getElementById("texterrorquantity");
     changeStyleQuantity.setAttribute(
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
-    errorText.innerHTML = "Merci d'indiquer le nombre de games";
+    errorText.innerHTML = "Merci d'indiquer votre nombre de games.";
+    return false;
   }
   //TAF pour submit
-  return isQuantityValid;
 };
 
 //bouton ville taf
@@ -294,7 +284,7 @@ const validateRadio = (event) => {
   //value checked radio
   // console.log(checkedLocation1Input);
   //let errorText = document.getElementById("texterrorlocation");
-  let isRadioValid = false;
+
   if (
     checkedLocation1Input == false &&
     checkedLocation2Input == false &&
@@ -305,14 +295,14 @@ const validateRadio = (event) => {
   ) {
     textLocation = document.getElementById("texterrorlocation").textContent;
     document.getElementById("texterrorlocation").textContent =
-      "Merci de sélectionner une ville";
+      "Merci de sélectionner une ville.";
 
     changeStyleIconObligatoire = document.getElementById("texterrorlocation");
     changeStyleIconObligatoire.setAttribute(
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
-
+    return false;
     //  errorText.innerHTML = "Merci de sélectionner une ville";
   } else {
     checkedLocation1Input == true ||
@@ -331,14 +321,13 @@ const validateRadio = (event) => {
       "font-size : 16px; color : red; font-weight : bold"
     );
     console.log("ok pour location");
-    isRadioValid = true;
+    return true;
     //let errorText = document.getElementById("texterrorlocation").focus();
 
     //  errorText.innerHTML = "";
     //document.getElementById("texterrorlocation").style.display = "none";
     //errorText.style.display = "none";
   }
-  return isRadioValid;
 };
 
 //boutons checkbox ok
@@ -349,15 +338,16 @@ const validateCheckbox = () => {
   // console.log(conditionsCheckBox1);
   let errorText = document.getElementById("texterrorconditions");
   //let errorText = document.getElementById("texterrorconditions");
-  let isCheckboxValid = false;
+
   if (conditionsCheckBox1.checked == false) {
     errorText.innerHTML =
-      "Merci d'accepter les conditions générales pour s'inscrire";
+      "Merci d'accepter les termes et conditions générales pour s'inscrire.";
     changeStyleIconObligatoire = document.getElementById("texterrorconditions");
     changeStyleIconObligatoire.setAttribute(
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
+    return false;
   } else {
     errorText.innerHTML = "";
     changeStyleIconObligatoire = document.getElementById("texterrorconditions");
@@ -366,9 +356,8 @@ const validateCheckbox = () => {
       "font-size : 16px; color : red; font-weight : bold"
     );
     console.log("conditions ok");
-    isCheckboxValid = true;
+    return true;
   }
-  return isCheckboxValid;
 };
 
 const validate = (event) => {
@@ -399,10 +388,10 @@ const validate = (event) => {
   console.log(isBirthdateValid);
   const isQuantityValid = validateQuantity();
   console.log(isQuantityValid);
-  const isCheckboxValid = validateCheckbox();
-  console.log(isCheckboxValid);
   const isRadioValid = validateRadio();
   console.log(isRadioValid);
+  const isCheckboxValid = validateCheckbox();
+  console.log(isCheckboxValid);
 
   //if (isValid) {
   //console.log({
@@ -416,8 +405,8 @@ const validate = (event) => {
     isEmailValid &&
     isBirthdateValid &&
     isQuantityValid &&
-    isCheckboxValid &&
-    isRadioValid
+    isRadioValid &&
+    isCheckboxValid
   );
   /*
   if (
@@ -497,3 +486,10 @@ document
     //alert("Formulaire envoyé !");
     validate(event);
   });
+
+const btnValidation = document.getElementById("btn-validation");
+btnValidation.addEventListener("click", function (event) {
+  modalbg.style.display = "none"; // fait disparaitre le tout
+  console.log(btnValidation);
+  // }
+});

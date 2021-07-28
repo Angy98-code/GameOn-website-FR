@@ -1,3 +1,5 @@
+/*ajout ligne 355*/
+
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
@@ -348,6 +350,44 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+/* ajout pour le der nier button après validation inscription */
+btn-confirmation {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+.submitMessage {
+  height: 80vh;
+  text-align: center;
+height: 80vh;
+    padding: 0 40px;
+    
+    align-items: center;
+    
+    font-size: 48px;
+    justify-content: center;
+    display: flex;
+}
+.btn-validation
+{
+background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+
+
 }
 /* custom select styles */
 .custom-select {
