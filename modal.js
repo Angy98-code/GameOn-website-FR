@@ -50,7 +50,7 @@ const validateFirst = (event) => {
 
   const nameRegex = /^[A-ZÇÉÈÊËÀÂÎÏÔÙÛa-zçéèêëàâîïôùû_\-\.\ ]+$/;
   let errorText = document.getElementById("texterrorfirstname");
-  let isFirstNameValid = false;
+  //let isFirstNameValid = false;
   if (valueNameInput.length < 2) {
     errorText.innerHTML = "Merci d'indiquer au moins 2 lettres";
     changeStyleFirstName = document.getElementById("texterrorfirstname");
@@ -59,6 +59,7 @@ const validateFirst = (event) => {
       "font-size : 16px; color : red; font-weight : bold"
     );
     console.log("problem nombre de caractères prénom!");
+    return false;
   } else if (
     nameRegex.test(nameInput.value) == true && ///erreur si valueNameInput!!!!!!!
     valueNameInput.length >= 2
@@ -70,8 +71,8 @@ const validateFirst = (event) => {
       "font-size : 16px; color : red; font-weight : bold"
     );
     console.log("ok prénom correct");
-
-    isFirstNameValid = true;
+    return true;
+    //isFirstNameValid = true;
   } else {
     changeStyleFirstName = document.getElementById("texterrorfirstname");
     changeStyleFirstName.setAttribute(
@@ -79,9 +80,10 @@ const validateFirst = (event) => {
       "font-size : 16px; color : red; font-weight : bold"
     );
     errorText.innerHTML = "Merci d'indiquer un prénom";
+    return false;
   }
 
-  return isFirstNameValid;
+  //return isFirstNameValid;
 };
 
 //NOM DE FAMILLE
@@ -135,13 +137,13 @@ const validateEmail = (event) => {
   // event.preventDefault(); //formulaire
   const nameInputEmail = document.getElementById("email"); // name field
   const valueNameInputEmail = nameInputEmail.value; //value field
-  const emailFormat =
-    ("^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$", "g");
+  const emailFormat = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
 
   //  /^[^\W][a-zA-Z0-9\-\._]+[^\W]@[^\W][a-zA-Z0-9\-\._]+[^\W]\.[a-zA-Z]{2,6}$/;
 
   // /^\A(?:[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])\z$/;
   let isEmailValid = false;
+  console.log(emailFormat.test(valueNameInputEmail));
 
   if (valueNameInputEmail == "") {
     //return "entrez une adresse email valide";
@@ -154,13 +156,7 @@ const validateEmail = (event) => {
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
-  } else if (
-    !(
-      valueNameInputEmail.indexOf(".") > 0 &&
-      valueNameInputEmail.indexOf("@") > 0
-    ) ||
-    /[^a-zA-Z0-9.@_-]/.test(valueNameInputEmail)
-  ) {
+  } else if (!emailFormat.test(valueNameInputEmail)) {
     //return "l'adresse incorrect";
     // return "";
     document.getElementById("texterroremail").textContent =
@@ -414,6 +410,16 @@ const validate = (event) => {
   //prénom: "toto",
   //});
 
+  return (
+    isFirstNameValid &&
+    isLastNameValid &&
+    isEmailValid &&
+    isBirthdateValid &&
+    isQuantityValid &&
+    isCheckboxValid &&
+    isRadioValid
+  );
+  /*
   if (
     isFirstNameValid &&
     isLastNameValid &&
@@ -422,11 +428,12 @@ const validate = (event) => {
     isQuantityValid &&
     isCheckboxValid &&
     isRadioValid
-  ) {
-    console.log(validate);
-    console.log({
-      prénom: "isFirstNameValid",
-      nom: "isLastName",
+  ) 
+  {
+   // console.log(validate);
+   // console.log({
+    //  prénom: "isFirstNameValid",
+      //nom: "isLastName",
       //prénom: "toto",
     });
     //
@@ -438,8 +445,9 @@ const validate = (event) => {
     changeStylemessageValidate.setAttribute(
       "style",
       "font-size : 16px; color : red; font-weight : bold; background-color : orange"
-    );*/
+    );
   }
+  */
   //) {
   //console.log(validate);
   //console.log("validate");
@@ -471,11 +479,15 @@ document
     ) {
       
       console.log("c'est partie pour l'envoi");
-      
+    console  
       //const inputs = document.getElementsByTagName("input");
-    }*/ if (validate(event)) {
-      let messageValidation = document.getElementById("submitMessage");
+    }*/
+    console.log(validate(event));
+    if (validate(event)) {
+      const messageValidation = document.getElementById("submitMessage");
       messageValidation.style.display = "block";
+      const form = document.getElementById("inscription");
+      form.style.display = "none";
     }
   });
 document
