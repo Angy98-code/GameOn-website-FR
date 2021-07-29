@@ -177,19 +177,19 @@ const validateEmail = (event) => {
   }
 };
 
-// BIRTHDAY
-
+////
 const validateBirthdate = (event) => {
   //  event.preventDefault(); //formulaire
   const nameInputBirthdate = document.getElementById("birthdate"); // name field
   const valueNameInputBirthdate = nameInputBirthdate.value; //value field
   // const birthdateFormat =
-  /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z0-9_\-\.]{2,5})$/;
+  // /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z0-9_\-\.]{2,5})$/;
   let errorText = document.getElementById("texterrorbirthdate");
   // setFullYear("first");
 
   if (valueNameInputBirthdate === "") {
-    errorText.innerHTML = "Merci d'entrer votre date de naissance.";
+    document.getElementById("texterrorbirthdate").textContent =
+      "Merci d'entrez une date de naissance valide";
     changeStyleBirthdate = document.getElementById("texterrorbirthdate");
     changeStyleBirthdate.setAttribute(
       "style",
@@ -200,6 +200,7 @@ const validateBirthdate = (event) => {
     // document.getElementById("texterroremail").textContent;
     document.getElementById("texterrorbirthdate").textContent = "";
     console.log("ok pour birthdate");
+
     return true;
   }
 };
@@ -247,25 +248,6 @@ const validateQuantity = (event) => {
 };
 
 //bouton ville taf
-/*
-const validateCheckbox = (event) => {
-  event.preventDefault(); //formulaire
-  const location1Input = document.getElementById("location1"); // name field
-  const location2Input = document.getElementById("location2"); // name field
-  const location3Input = document.getElementById("location3"); // name field
-  const location4Input = document.getElementById("location4"); // name field
-  const location5Input = document.getElementById("location5"); // name field
-  const location6Input = document.getElementById("location6"); // name field
-  const checkedLocation1Input = location1Input.checked; 
-  const checkedLocation2Input = location2Input.checked; 
-  const checkedLocation3Input = location3Input.checked; 
-  const checkedLocation4Input = location4Input.checked; 
-  const checkedLocation5Input = location5Input.checked; 
-  const checkedLocation6Input = location6Input.checked; 
-  //value checked radio
-
-  let errorText = document.getElementById("texterrorlocation");
-*/
 
 const validateRadio = (event) => {
   //event.preventDefault(); //formulaire
@@ -281,9 +263,6 @@ const validateRadio = (event) => {
   const checkedLocation4Input = location4Input.checked;
   const checkedLocation5Input = location5Input.checked;
   const checkedLocation6Input = location6Input.checked;
-  //value checked radio
-  // console.log(checkedLocation1Input);
-  //let errorText = document.getElementById("texterrorlocation");
 
   if (
     checkedLocation1Input == false &&
@@ -322,11 +301,6 @@ const validateRadio = (event) => {
     );
     console.log("ok pour location");
     return true;
-    //let errorText = document.getElementById("texterrorlocation").focus();
-
-    //  errorText.innerHTML = "";
-    //document.getElementById("texterrorlocation").style.display = "none";
-    //errorText.style.display = "none";
   }
 };
 
@@ -362,22 +336,6 @@ const validateCheckbox = () => {
 
 const validate = (event) => {
   console.log(event);
-  /*
-  validateFirst(event);
-  console.error("validation PRENOM", isValid);
-  validateLast(event);
-  console.error("validation NOM", isValid);
-  validateEmail(event);
-  console.error("validation EMAIL", isValid);
-  validateBirthdate(event);
-  console.error("validation BIRTHDATE", isValid);
-  validateQuantity(event);
-  console.error("validation QUANTITY", isValid);
-  validateCheckbox(event);
-  console.error("validation CHECKBOX", isValid);
-  validateRadio(event);
-  console.error("validation RADIO", isValid);
-*/
   const isFirstNameValid = validateFirst();
   console.log(isFirstNameValid);
   const isLastNameValid = validateLast();
@@ -408,42 +366,6 @@ const validate = (event) => {
     isRadioValid &&
     isCheckboxValid
   );
-  /*
-  if (
-    isFirstNameValid &&
-    isLastNameValid &&
-    isEmailValid &&
-    isBirthdateValid &&
-    isQuantityValid &&
-    isCheckboxValid &&
-    isRadioValid
-  ) 
-  {
-   // console.log(validate);
-   // console.log({
-    //  prénom: "isFirstNameValid",
-      //nom: "isLastName",
-      //prénom: "toto",
-    });
-    //
-    /*
-    messageValidation.style.display = "block";
-    //modal_body.style.display = "none";
-
-    changeStylemessageValidate = document.getElementById("submitMessage");
-    changeStylemessageValidate.setAttribute(
-      "style",
-      "font-size : 16px; color : red; font-weight : bold; background-color : orange"
-    );
-  }
-  */
-  //) {
-  //console.log(validate);
-  //console.log("validate");
-  //document.write(submiteMessage);
-  //}
-
-  // }*/
 };
 
 //
@@ -453,24 +375,6 @@ document
   .addEventListener("submit", function (event) {
     event.preventDefault(); // on le met si erreur afin de ne pas envoyé le formulaire
 
-    //messageValidation.style.display = "none";
-
-    // enlever plus tard
-    //  alert("Formulaire envoyé !");
-    /*if (
-      validateFirst === true &&
-      validateLast === true &&
-      validateEmail === true &&
-      validateBirthdate === true &&
-      validateQuantity === true &&
-      validateRadio === true &&
-      validateCheckbox === true
-    ) {
-      
-      console.log("c'est partie pour l'envoi");
-    console  
-      //const inputs = document.getElementsByTagName("input");
-    }*/
     console.log(validate(event));
     if (validate(event)) {
       const messageValidation = document.getElementById("submitMessage");

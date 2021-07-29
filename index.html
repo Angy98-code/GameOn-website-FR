@@ -45,8 +45,7 @@ Invalid syntax, the height attribute expects only digits -
     <div class="hero-section">
       <div class="hero-content">
         <h1 class="hero-headline">
-          Marathon national<br>
-          de jeux vidéos
+          Marathon national<br>de jeux vidéos
         </h1>
         <p class="hero-text">
           Vous aimez jouer ? Notre prochain évènement gaming est ouvert
@@ -76,7 +75,7 @@ Invalid syntax, the height attribute expects only digits -
 
         <!--relier label à un champ label for input id même nom-->
         <div class="modal-body">
-          <form id="inscription" name="reserve">
+          <form id="inscription" novalidate name="reserve">
             <!--type="submit" novalidate value="inscription"-->
             <!--novalidate permet Si vous souhaitez désactiver la validation côté client pour un formulaire en HTML5, ajoutez un attribut novalidate à l'élément de formulaire. Ex:-->
             <!--onsubmit="validateFirst(event), validateLast(event), validateEmail(event), validateBirthdate(event), validateQuantity(event), validateCheckbox(event), validateRadio(event)"-->
@@ -108,6 +107,7 @@ Invalid syntax, the height attribute expects only digits -
               <input class="textcontrol" id="birthdate" name="birthdate" type="date" /><br>
               <div id="texterrorbirthdate"></div>
             </div>
+
             <div class="formData">
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
               <input type="number" class="textcontrol" id="quantity" name="quantity">
