@@ -8,49 +8,32 @@ function editNav() {
 }
 
 // DOM Elements
-
 // bouton je m'inscris
-const modalBtn = document.querySelectorAll(".modal-btn"); //bouton je m'incris il faut un message
-
-const formData = document.querySelectorAll(".formData"); //ct au depart container de prenom, nom....
-
-// lauch modal bouton je m'inscris
-// launch modal event !!!!!! je n'ai rien en lauchModal
+const modalBtn = document.querySelectorAll(".modal-btn");
+//lauch modal
+// launch modal (bouton je m'inscris) évenement du formulaire au click
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-// launch modal form
+// apparition de la launchModal formulaire d'inscription
 function launchModal() {
   modalbg.style.display = "block";
 }
-// bouton fermeture croix je m'inscris okkkkkkkk
+// bouton fermeture croix x
 const btnClose = document.querySelector("#closebtn");
-const modalbg = document.querySelector(".bground"); //à l'origine
-
-//window.onclick = function(event) {
-
+const modalbg = document.querySelector(".bground");
 btnClose.addEventListener("click", function (event) {
-  modalbg.style.display = "none"; // fait disparaitre le tout
-  console.log(btnClose);
-  // }
+  modalbg.style.display = "none";
 });
 
-// JE RECUPERE MON FORMULAIRE VALIDATE POUR PLUS TARD
-
-//detection envoi formulaire sur nouvelle page id dans form NB
-/* bouton envoiNBNBNBNBNB
-document.getElementById("inscription").addEventListener("submit", function (e) {
-  e.preventDefault(); // on le met si erreur afin de ne pas envoyé le formulaire
-  alert("Formulaire envoyé !");
-});
-NBNBNBNBNBNBNB*/
-//1ier cas
+//
+// 1er CHAMP : LE PRENOM
+//
 const validateFirst = (event) => {
-  // event.preventDefault(); //formulaire
+  // event.preventDefault();
   const nameInput = document.getElementById("first"); // name field
   const valueNameInput = nameInput.value; //value field
-
   const nameRegex = /^[A-ZÇÉÈÊËÀÂÎÏÔÙÛa-zçéèêëàâîïôùû_\-\.\ ]+$/;
   let errorText = document.getElementById("texterrorfirstname");
-  //let isFirstNameValid = false;
+
   if (valueNameInput.length < 2) {
     errorText.innerHTML =
       "Merci d'entrer au minimum 2 caractères pour le champ du prénom.";
@@ -59,7 +42,6 @@ const validateFirst = (event) => {
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
-    console.log("problem nombre de caractères prénom!");
     return false;
   } else if (
     nameRegex.test(nameInput.value) === true && ///erreur si valueNameInput!!!!!!!
@@ -71,9 +53,7 @@ const validateFirst = (event) => {
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
-    console.log("ok prénom correct");
     return true;
-    //isFirstNameValid = true;
   } else {
     changeStyleFirstName = document.getElementById("texterrorfirstname");
     changeStyleFirstName.setAttribute(
@@ -83,20 +63,17 @@ const validateFirst = (event) => {
     errorText.innerHTML = "Merci d'indiquer un prénom";
     return false;
   }
-
-  //return isFirstNameValid;
 };
-
-//NOM DE FAMILLE
-
+//
+//2ème CHAMP : NOM DE FAMILLE
+//
 const validateLast = (event) => {
-  //  event.preventDefault(); //formulaire
-  const lastNameInput = document.getElementById("last"); // name field
-  const valueLastNameInput = lastNameInput.value; //value field
-
+  //  event.preventDefault();
+  const lastNameInput = document.getElementById("last");
+  const valueLastNameInput = lastNameInput.value;
   const lastNameRegex = /^[A-ZÇÉÈÊËÀÂÎÏÔÙÛa-zçéèêëàâîïôùû_\-\.\ ]+$/;
   let errorText = document.getElementById("texterrorlastname");
-  // let isLastNameValid = false;
+
   if (valueLastNameInput.length < 2) {
     errorText.innerHTML =
       "Merci d'entrer au minimum 2 caractères pour le champ du nom.";
@@ -105,20 +82,17 @@ const validateLast = (event) => {
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
-    console.log("problem nombre de caractères nom!");
     return false;
   } else if (
     lastNameRegex.test(lastNameInput.value) == true && ///erreur si valueNameInput!!!!!!!
     valueLastNameInput.length >= 2
   ) {
     errorText.innerHTML = "";
-
     changeStyleLastName = document.getElementById("texterrorlastname");
     changeStyleLastName.setAttribute(
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
-    console.log("ok nom correct");
     return true;
   } else {
     changeStyleFirstName = document.getElementById("texterrorfirstname");
@@ -132,23 +106,18 @@ const validateLast = (event) => {
 };
 
 //
-
-//EMAIL
+//3ème CHAMP : EMAIL
+//
 const validateEmail = (event) => {
-  // event.preventDefault(); //formulaire
-  const nameInputEmail = document.getElementById("email"); // name field
-  const valueNameInputEmail = nameInputEmail.value; //value field
+  // event.preventDefault();
+  const nameInputEmail = document.getElementById("email");
+  const valueNameInputEmail = nameInputEmail.value;
   const emailFormat = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
-
-  //  /^[^\W][a-zA-Z0-9\-\._]+[^\W]@[^\W][a-zA-Z0-9\-\._]+[^\W]\.[a-zA-Z]{2,6}$/;
-
   // /^\A(?:[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])\z$/;
-  // let isEmailValid = false;
+
   console.log(emailFormat.test(valueNameInputEmail)); // erklärung!
 
   if (valueNameInputEmail == "") {
-    //return "entrez une adresse email valide";
-    console.log("");
     textEmail = document.getElementById("texterroremail").textContent;
     document.getElementById("texterroremail").textContent =
       "Merci de renseigner une adresse email valide.";
@@ -159,8 +128,6 @@ const validateEmail = (event) => {
     );
     return false;
   } else if (!emailFormat.test(valueNameInputEmail)) {
-    //return "l'adresse incorrect";
-    // return "";
     document.getElementById("texterroremail").textContent =
       "Adresse email incorrect. ";
     changeStyleEmail = document.getElementById("texterroremail");
@@ -170,22 +137,17 @@ const validateEmail = (event) => {
     );
     return false;
   } else {
-    // document.getElementById("texterroremail").textContent;
     document.getElementById("texterroremail").textContent = "";
-    console.log("ok email correct");
     return true;
   }
 };
-
-////
+//
+// 4ème CHAMP : BIRTHDATE
+//
 const validateBirthdate = (event) => {
-  //  event.preventDefault(); //formulaire
-  const nameInputBirthdate = document.getElementById("birthdate"); // name field
-  const valueNameInputBirthdate = nameInputBirthdate.value; //value field
-  // const birthdateFormat =
-  // /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z0-9_\-\.]{2,5})$/;
+  const nameInputBirthdate = document.getElementById("birthdate");
+  const valueNameInputBirthdate = nameInputBirthdate.value;
   let errorText = document.getElementById("texterrorbirthdate");
-  // setFullYear("first");
 
   if (valueNameInputBirthdate === "") {
     document.getElementById("texterrorbirthdate").textContent =
@@ -197,21 +159,16 @@ const validateBirthdate = (event) => {
     );
     return false;
   } else {
-    // document.getElementById("texterroremail").textContent;
     document.getElementById("texterrorbirthdate").textContent = "";
-    console.log("ok pour birthdate");
-
     return true;
   }
 };
-
-// QUANTITY
-
+//
+//5ème CHAMP : QUANTITY
+//
 const validateQuantity = (event) => {
-  // event.preventDefault(); //formulaire
-  const quantityInput = document.getElementById("quantity"); // name field
-  const valueQuantityInput = quantityInput.value; //value field
-
+  const quantityInput = document.getElementById("quantity");
+  const valueQuantityInput = quantityInput.value;
   const quantityRegex = /^[0-9]/;
   let errorText = document.getElementById("texterrorquantity");
 
@@ -225,7 +182,6 @@ const validateQuantity = (event) => {
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
-    console.log("okay for number of games");
     return true;
   } else if (valueQuantityInput > 99) {
     changeStyleQuantity = document.getElementById("texterrorquantity");
@@ -244,19 +200,17 @@ const validateQuantity = (event) => {
     errorText.innerHTML = "Merci d'indiquer votre nombre de games.";
     return false;
   }
-  //TAF pour submit
 };
-
-//bouton ville taf
-
+//
+//6ème CHAMP : BOUTON VILLE
+//
 const validateRadio = (event) => {
-  //event.preventDefault(); //formulaire
-  const location1Input = document.getElementById("location1"); // name field
-  const location2Input = document.getElementById("location2"); // name field
-  const location3Input = document.getElementById("location3"); // name field
-  const location4Input = document.getElementById("location4"); // name field
-  const location5Input = document.getElementById("location5"); // name field
-  const location6Input = document.getElementById("location6"); // name field
+  const location1Input = document.getElementById("location1");
+  const location2Input = document.getElementById("location2");
+  const location3Input = document.getElementById("location3");
+  const location4Input = document.getElementById("location4");
+  const location5Input = document.getElementById("location5");
+  const location6Input = document.getElementById("location6");
   const checkedLocation1Input = location1Input.checked;
   const checkedLocation2Input = location2Input.checked;
   const checkedLocation3Input = location3Input.checked;
@@ -275,14 +229,12 @@ const validateRadio = (event) => {
     textLocation = document.getElementById("texterrorlocation").textContent;
     document.getElementById("texterrorlocation").textContent =
       "Merci de sélectionner une ville.";
-
     changeStyleIconObligatoire = document.getElementById("texterrorlocation");
     changeStyleIconObligatoire.setAttribute(
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
     return false;
-    //  errorText.innerHTML = "Merci de sélectionner une ville";
   } else {
     checkedLocation1Input == true ||
       checkedLocation2Input == true ||
@@ -299,19 +251,15 @@ const validateRadio = (event) => {
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
-    console.log("ok pour location");
     return true;
   }
 };
-
-//boutons checkbox ok
+//
+//7ème CHAMP : CHECHBOX
+//
 const validateCheckbox = () => {
   const conditionsCheckBox1 = document.getElementById("checkbox1");
-  // conditionsCheckBox1.addEventListener("change", function (event) {
-  // event.preventDefault();
-  // console.log(conditionsCheckBox1);
   let errorText = document.getElementById("texterrorconditions");
-  //let errorText = document.getElementById("texterrorconditions");
 
   if (conditionsCheckBox1.checked == false) {
     errorText.innerHTML =
@@ -329,33 +277,31 @@ const validateCheckbox = () => {
       "style",
       "font-size : 16px; color : red; font-weight : bold"
     );
-    console.log("conditions ok");
     return true;
   }
 };
 
-const validate = (event) => {
-  console.log(event);
-  const isFirstNameValid = validateFirst();
-  console.log(isFirstNameValid);
-  const isLastNameValid = validateLast();
-  console.log(isLastNameValid);
-  const isEmailValid = validateEmail();
-  console.log(isEmailValid);
-  const isBirthdateValid = validateBirthdate();
-  console.log(isBirthdateValid);
-  const isQuantityValid = validateQuantity();
-  console.log(isQuantityValid);
-  const isRadioValid = validateRadio();
-  console.log(isRadioValid);
-  const isCheckboxValid = validateCheckbox();
-  console.log(isCheckboxValid);
+//
+// FONCTION DE VALIDATION
 
-  //if (isValid) {
-  //console.log({
-  //prénom: "isFirstNameValid",
-  //prénom: "toto",
-  //});
+const validate = (event) => {
+  const isFirstNameValid = validateFirst();
+  const isLastNameValid = validateLast();
+  const isEmailValid = validateEmail();
+  const isBirthdateValid = validateBirthdate();
+  const isQuantityValid = validateQuantity();
+  const isRadioValid = validateRadio();
+  const isCheckboxValid = validateCheckbox();
+
+  console.log({
+    prénom: "isFirstNameValid",
+    nom: "isLastNameValid",
+    email: "isEmailValid",
+    birthdate: "isBirthdateValid",
+    quantity: "isQuantityValid",
+    ville: "isRadioValid",
+    checkbox: "isCheckboxValid",
+  });
 
   return (
     isFirstNameValid &&
@@ -369,7 +315,8 @@ const validate = (event) => {
 };
 
 //
-/////////////////////////////////////////////////////////////://
+// FONCTIONS ENVOI DU FORMULAIRE ET MESSAGE DE REMERCIEMENT
+//
 document
   .getElementById("inscription")
   .addEventListener("submit", function (event) {
@@ -383,17 +330,18 @@ document
       form.style.display = "none";
     }
   });
+//
 document
   .getElementById("inscription")
-  .addEventListener("change", function (event) {
-    event.preventDefault(); // on le met si erreur afin de ne pas envoyé le formulaire
-    //alert("Formulaire envoyé !");
+  .addEventListener("dblclick", function (event) {
+    event.preventDefault();
     validate(event);
   });
 
+//
+// BOUTON FERMETURE APRES INSCRIPTION
 const btnValidation = document.getElementById("btn-validation");
 btnValidation.addEventListener("click", function (event) {
-  modalbg.style.display = "none"; // fait disparaitre le tout
+  modalbg.style.display = "none";
   console.log(btnValidation);
-  // }
 });
