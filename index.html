@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
-  <title>Reservation</title>
+  <title>Reservation GameOn</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="modal.css" />
-  <!-- mettre style ?-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
 </head>
@@ -15,21 +14,8 @@
   <div class="topnav" id="myTopnav">
     <div class="header-logo">
       <img alt="logo" src="Logo.png" />
-      <!--logo et bg quel emplacement car j'ai des erreurs-->
-      <!-- mis en css style="width: auto",  style="height: auto" -->
-
-      <!--
-Invalid syntax, the height attribute expects only digits -
-<img src="photo.jpg" alt="cat" height="auto" />
-
- Valid syntax using CSS -
-<img src="photo.jpg" alt="cat" style="height: auto" /> -->
-
-
-
     </div>
     <div class="main-navbar">
-
       <a href="#" class="active"><span>Accueil</span></a>
       <a href="#"><span>Détails de l'évènement</span></a>
       <a href="#"><span>À propos</span></a>
@@ -39,13 +25,13 @@ Invalid syntax, the height attribute expects only digits -
         <i class="fa fa-bars"></i>
       </a>
     </div>
-    <!--  une div fermente de trop-->
   </div>
   <main>
     <div class="hero-section">
       <div class="hero-content">
         <h1 class="hero-headline">
-          Marathon national<br>de jeux vidéos
+          Marathon national<br>
+          de jeux vidéos
         </h1>
         <p class="hero-text">
           Vous aimez jouer ? Notre prochain évènement gaming est ouvert
@@ -56,40 +42,21 @@ Invalid syntax, the height attribute expects only digits -
         </button>
       </div>
       <div class="hero-img">
-        <img src="bg_img.jpg" alt="img" />
+        <img src="./bg_img.jpg" alt="img" />
       </div>
       <button class="btn-signup modal-btn">
         je m'inscris
       </button>
     </div>
-
     <div class="bground">
       <div class="content">
-        <!-- bouton fermeture avec la croix-->
         <span class="close" id="closebtn"></span>
-        <!-- <input class="close" type='button' value='Fermeture Pop Up' onClick='fencent.close();'>
-   -->
-
-
-
-
-        <!--relier label à un champ label for input id même nom-->
         <div class="modal-body">
           <form id="inscription" novalidate name="reserve">
-            <!--type="submit" novalidate value="inscription"-->
-            <!--novalidate permet Si vous souhaitez désactiver la validation côté client pour un formulaire en HTML5, ajoutez un attribut novalidate à l'élément de formulaire. Ex:-->
-            <!--onsubmit="validateFirst(event), validateLast(event), validateEmail(event), validateBirthdate(event), validateQuantity(event), validateCheckbox(event), validateRadio(event)"-->
-            <!--ajout de ID = "validate" permet de récuperer le formulaire plus tard en js-->
-            <!-- il y a plusieurs chose à savoir pour form ex reset-->
-            <!--manque id pour valider inscription formulaire donc un id dans form-->
-
             <div class="formData">
               <label for="first">Prénom</label><br>
               <input class="textcontrol" type="text" id="first" name="first" /> <br>
-
-              <!--ajout requiredpattern pour n'avoir que des lettres-->
               <div id="texterrorfirstname"></div>
-              <!--ajout de cette div -->
             </div>
             <div class="formData">
               <label for="last">Nom</label><br>
@@ -99,7 +66,6 @@ Invalid syntax, the height attribute expects only digits -
             <div class="formData">
               <label for="email">E-mail</label><br>
               <input class="textcontrol" id="email" name="email" /><br>
-              <!--type="email" enlevé pour ne pas avoir un message d'erreur-->
               <div id="texterroremail"></div>
             </div>
             <div class="formData">
@@ -107,16 +73,11 @@ Invalid syntax, the height attribute expects only digits -
               <input class="textcontrol" id="birthdate" name="birthdate" type="date" /><br>
               <div id="texterrorbirthdate"></div>
             </div>
-
             <div class="formData">
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
               <input type="number" class="textcontrol" id="quantity" name="quantity">
-              <!--enlevé  min="0" max="99" je le passe en js direcetement  -->
               <div id="texterrorquantity"></div>
             </div>
-
-            <!--fieldset regroupé les champs ensuite legend mais il n'y a pas ca ici
-              on parle de optgroup par exemple europe asie ...-->
             <p class="text-label">Quelle ville ?</p>
             <div class="formData">
               <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
@@ -145,35 +106,23 @@ Invalid syntax, the height attribute expects only digits -
                 Portland</label>
               <div id="texterrorlocation"></div>
             </div>
-
             <div class="formData">
-              <!-- ajout required="required" et  onclick-->
               <input class="checkbox-input" type="checkbox" id="checkbox1" name="checkbox1" />
               <label class=" checkbox2-label" for="checkbox1">
-                <!-- pourquoi 2?-->
                 <span class="checkbox-icon" id="iconObligatoire"></span>
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
               <div id="texterrorconditions"></div>
               <p id="icontext" style="display:none"></p>
-              <!--il y a vait du texte (ce champ est obligatoire)entre les balise et display none obligatoire ?-->
-              <!--j'enlève une br-->
-              <!--ajout name pour la fonction-->
               <input class="checkbox-input" type="checkbox" id="checkbox2" name="checkbox2" />
-
               <label class="checkbox2-label" for="checkbox2">
                 <span class="checkbox-icon"></span>
-                <!-- Je --> Je souhaite être prévenu des prochains évènements.
+                Je souhaite être prévenu des prochains évènements.
               </label>
               <br>
               <br>
-              <!---j'ajoute une br-->
             </div>
-            <!--manque qq chose imput suffit ? il n'est pa relier à un button ou label avec for-->
             <input class="btn-submit" type="submit" id="submit" name="submit" value="C'est parti" />
-            <!--ajout precedent ajout id submit et onclick enlevé  -->
-            <!-- ajout name-->
-
           </form>
           <div id="submitMessage" style="display:none">
             <p class="submitMessage">Merci ! <br>Votre réservation a bien été reçue.</p>
@@ -189,7 +138,6 @@ Invalid syntax, the height attribute expects only digits -
     </p>
   </footer>
   <script type="text/javascript" src="modal.js"></script>
-
 </body>
 
 </html>

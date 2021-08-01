@@ -285,6 +285,7 @@ const validateCheckbox = () => {
 // FONCTION DE VALIDATION
 
 const validate = (event) => {
+  console.log(event);
   const isFirstNameValid = validateFirst();
   const isLastNameValid = validateLast();
   const isEmailValid = validateEmail();
@@ -299,7 +300,7 @@ const validate = (event) => {
     email: "isEmailValid",
     birthdate: "isBirthdateValid",
     quantity: "isQuantityValid",
-    ville: "isRadioValid",
+    radio: "isRadioValid",
     checkbox: "isCheckboxValid",
   });
 

@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  /*background-image: url("background.png");*/
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -30,14 +29,13 @@ img {
   padding-right: 1rem;
 }
 
-/**/
 .topnav {
   overflow: hidden;
   margin: 3.5%;
 }
 .header-logo {
   float: left;
-  /* ajout venant du html */
+
   width: auto;
   height: auto;
 }
@@ -50,7 +48,7 @@ img {
   color: #000000;
   text-align: center;
   padding: 12px 12px;
-  /*margin: 5px;*/
+
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
@@ -72,18 +70,16 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 991px) {
-  
-  
+@media screen and (max-width: 1087px) {
   .topnav a {
     display: none;
   }
   .topnav a.icon {
     float: right;
     display: block;
-    color :red;
+    color: red;
   }
-.topnav.responsive {
+  .topnav.responsive {
     position: relative;
   }
   .topnav.responsive .icon {
@@ -153,16 +149,6 @@ main {
   border-radius: 15px;
   cursor: pointer;
   font-size: 16px;
-  /*btn-button
-    background: #fe142f;
-  display: block;
-  margin: 0 auto;
-  border-radius: 7px;
-  font-size: 1rem;
-  padding: 12px 82px;
-  color: #fff;
-  cursor: pointer;
-  border: 0;*/
 }
 
 .button:hover {
@@ -242,12 +228,7 @@ input {
 .formData[data-error-visible="true"] .textcontrol {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -350,7 +331,6 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
-/* ajout pour le der nier button après validation inscription */
 btn-confirmation {
   background: #fe142f;
   display: block;
@@ -367,9 +347,7 @@ btn-confirmation {
   text-align: center;
   height: 80vh;
   padding: 0 40px;
-
   align-items: center;
-
   font-size: 48px;
   justify-content: center;
   display: flex;
@@ -578,14 +556,6 @@ footer {
   }
 }
 /* ajout antidébordements*/
-/*@media screen and (max-width: 400px) {
-  .hero-text {
-    width: 300px;
-  }
-   .hero-headline {
-    font-size: 50px;
-  }
-}*/
 
 @media screen and (max-width: 431px) {
   .btn-signup {
@@ -722,7 +692,7 @@ footer {
   }
 }
 
-@media screen and (min-width: 540px) and (max-width: 991px) {
+@media screen and (min-width: 540px) and (max-width: 1087px) {
   .topnav {
     padding-top: 20px;
   }
@@ -743,7 +713,7 @@ footer {
   }
 
   .hero-headline {
-    font-size: 64px;
+    font-size: 80px;
     white-space: none;
     margin: 0;
   }
@@ -763,7 +733,7 @@ footer {
   }
 }
 
-@media screen and (min-width: 991px) {
+@media screen and (min-width: 1087px) {
   img {
     width: 210px;
   }
