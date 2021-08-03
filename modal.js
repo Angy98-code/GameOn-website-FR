@@ -282,8 +282,8 @@ const validateCheckbox = () => {
 //
 // FONCTION DE VALIDATION
 
-const validate = (event) => {
-  console.log(event);
+const validate = () => {
+ 
   const isFirstNameValid = validateFirst();
   const isLastNameValid = validateLast();
   const isEmailValid = validateEmail();
@@ -292,15 +292,6 @@ const validate = (event) => {
   const isRadioValid = validateRadio();
   const isCheckboxValid = validateCheckbox();
 
-  console.log({
-    prénom: "isFirstNameValid",
-    nom: "isLastNameValid",
-    email: "isEmailValid",
-    birthdate: "isBirthdateValid",
-    quantity: "isQuantityValid",
-    radio: "isRadioValid",
-    checkbox: "isCheckboxValid",
-  });
 
   return (
     isFirstNameValid &&
@@ -321,13 +312,24 @@ document
   .addEventListener("submit", function (event) {
     event.preventDefault(); // on le met si erreur afin de ne pas envoyé le formulaire
 
-    console.log(validate(event));
+  
     if (validate(event)) {
       const messageValidation = document.getElementById("submitMessage");
       messageValidation.style.display = "block";
       const form = document.getElementById("inscription");
       form.style.display = "none";
+        console.log({
+          prénom: "isFirstNameValid",
+          nom: "isLastNameValid",
+          email: "isEmailValid",
+          birthdate: "isBirthdateValid",
+          quantity: "isQuantityValid",
+          radio: "isRadioValid",
+          checkbox: "isCheckboxValid",
+        });
+
     }
+
   });
 //
 document
@@ -342,5 +344,5 @@ document
 const btnValidation = document.getElementById("btn-validation");
 btnValidation.addEventListener("click", function (event) {
   modalbg.style.display = "none";
-  console.log(btnValidation);
+ 
 });
